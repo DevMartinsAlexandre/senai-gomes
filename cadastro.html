@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senai games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: lightslategray;
+        }
+        .login, .menu {
+            flex: 1;
+            height: 100%;
+        }
+        .login {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu {
+            background-image: url('https://conteudo.imguol.com.br/c/entretenimento/5c/2017/12/15/steam-library-1513352750865_v2_1170x540.jpg');
+             
+            background-position: center;
+        }
+        .campo-cadastro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .campo-cadastro h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .campo-cadastro input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .campo-cadastro button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(5, 102, 228);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .campo-cadastro button:hover {
+            background-color: rgb(5, 102, 228);
+        }
+        .campo-cadastro .cadastro {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<script>
+
+    function enviar(){
+
+    fetch('/cadastrar_usuarios', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email: document.getElementById('email').value,
+        usuario: document.getElementById('username').value,
+        senha: document.getElementById('password').value
+    })
+})
+.then(response => response.text())
+.then(data => console.log(data))
+.catch(error => console.error('Erro:', error));
+}
+
+ </script>
+
+
+
+    <div class="topo">
+
+<div class="container">
+    
+    <div class="login">
+        <div class="campo-cadastro">
+            <h2>Cadastro</h2>
+            
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="text" id="email" placeholder="email" required>
+                <input type="password" id="password" placeholder="senha" required>
+                <button onclick="enviar()">Cadastrar</button>
+           
+            <div class="cadastro">
+                
+                <a href="/login.html">Faça login com sua conta!</a>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="menu">
+    
+    </div>
+</div>
+
+</body>
+</html>
