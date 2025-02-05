@@ -14,7 +14,15 @@ app.get('/', function (req, res) {
 app.get('/pagina_inicial', function (req, res) {
     res.sendFile(path.join(__dirname + '/pagina_inicial.html'));
 });
-
+app.get('/nintendo', function (req, res) {
+    res.sendFile(path.join(__dirname + '/nintendo.html'));
+});
+app.get('/playstation', function (req, res) {
+    res.sendFile(path.join(__dirname + '/playstation.html'));
+});
+app.get('/xbox', function (req, res) {
+    res.sendFile(path.join(__dirname + '/xbox.html'));
+});
 
 app.post('/verificar', function (req, res) {
     console.log(req.body);
